@@ -9,7 +9,7 @@ import './App.css'
 //used to initialize the chat
 const apiKey='3nsmrbmwhfqt';
 
-//creating instance of a stream chat
+// instance of a stream chat
 const client = StreamChat.getInstance(apiKey);
 
 const App = () => {
