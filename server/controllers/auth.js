@@ -1,8 +1,8 @@
 const {connect}=require('getstream');
 const bcrypt=require('bcrypt');
-const StreamChat=require('stream-chat');
+const StreamChat=require('stream-chat').StreamChat;
 const crypto=require('crypto');
-
+require('dotenv').config();
 
 const api_key=process.env.STREAM_API_KEY
 const api_secret=process.env.STREAM_API_SECRET
@@ -10,6 +10,7 @@ const app_id=process.env.STREAM_APP_ID
 
 const signup=async(req,res)=>{
     try{
+        console.log(api_key,api_secret,app_id)
         const {fullName,username,password,phoneNumber}=req.body;
         //will create a random sequence of 16 hexadecimal digits
         const userId=crypto.randomBytes(16).toString('hex');
@@ -20,12 +21,13 @@ const signup=async(req,res)=>{
         res.status(200).json({token,fullName,username,userId,hashedPassword,phoneNumber});
     }catch(error){
         console.log(error);
+        console.log(api_key,api_secret,app_id)
         res.status(500).json({message:error});
     }
 }
 
 
-const login=async()=>{
+const login=async(req,res)=>{
     try {
         const {username,password}=req.body;
         const serverClient=connect(api_key,api_secret,app_id);

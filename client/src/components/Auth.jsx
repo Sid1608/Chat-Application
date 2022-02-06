@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import cookies from 'universal-cookie'
+import Cookies from 'universal-cookie'
 import axios from 'axios';
 import signinImage from '../assets/signup.jpg';
 
+
+const cookies=new Cookies();
 const initialState= {
   fullName:'',
   username:'',
@@ -24,7 +26,7 @@ const Auth = () => {
     const handleSubmit=async(e)=>{
       e.preventDefault();
       const {fullName,username,password,phoneNumber,avatarURL}=form;
-      const URL = 'https://localhost:5000/auth';
+      const URL = 'http://localhost:5000/auth';
         const { data: { token, userId, hashedPassword } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, password,fullName, phoneNumber, avatarURL,
         });
@@ -75,7 +77,7 @@ const Auth = () => {
                                <div className="auth__form-container_fields-content_input">
                                    <label htmlFor="phoneNumber">Phone Number</label>
                                    <input
-                                     name="phoneName"
+                                     name="phoneNumber"
                                      type="text"
                                      placeholder="Phone Number"
                                      onChange={handleChange}
