@@ -31,7 +31,7 @@ const CompanyHeader=()=>{
 }
 
 
-const ChannelListContainer = ({isCreating,setIsCreating,isEditing,setIsEditing}) => {
+const ChannelListContainer = ({isCreating,setIsCreating,setCreateType,setIsEditing}) => {
     const logout=()=>{
         cookies.remove('token');
         cookies.remove('userId');
