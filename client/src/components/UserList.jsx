@@ -3,6 +3,7 @@ import { Avatar, useChatContext } from 'stream-chat-react';
 
 import { InviteIcon } from '../assets';
 
+//whatever component you will rendered inside of this will be populated into childres prps
 const ListContainer = ({ children }) => {
     return (
         <div className="user-list__container">
